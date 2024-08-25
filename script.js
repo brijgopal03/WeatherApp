@@ -7,15 +7,17 @@ const loadingScreen = document.querySelector(".loading-container")
 const userInfoContainer = document.querySelector(".user-info-container")
 
 
-let oldTab = userTab;
+let currentTab = userTab;
 const API_KEY = "1d79c0910cab4fc1cbd67e272b32abbe";
-oldTab.classList.add("current-tab")
+currentTab.classList.add("current-tab")
 getfromSessionStorage();
 
 function switchTab(newTab){
-    oldTab.classList.remove("current-tab");
-    oldTab = newTab;
-    oldTab.classList.add("current-tab");
+    if(newTab == currentTab) return;
+    
+    currentTab.classList.remove("current-tab");
+    currentTab = newTab;
+    currentTab.classList.add("current-tab");
 
    if(!searchForm.classList.contains("active")){
     userInfoContainer.classList.remove("active")
@@ -91,10 +93,10 @@ function renderWeatherInfo(weatherInfo){
     countryIcon.src = `https://flagcdn.com/144x108/${weatherInfo?.sys?.country.toLowerCase()}.png`;
     desc.innerText = weatherInfo?.weather?.[0]?.description;
     weatherIcon.src = `http://openweathermap.org/img/w/${weatherInfo?.weather?.[0]?.icon}.png`;
-    temp.innerText = weatherInfo?.main?.temp;
-    windspeed.innerText = weatherInfo?.wind?.speed;
-    humidity.innerText = weatherInfo?.main?.humidity;
-    cloudiness.innerText = weatherInfo?.clouds?.all;
+    temp.innerText = `${weatherInfo?.main?.temp} °C `;
+    windspeed.innerText = `${weatherInfo?.wind?.speed} m/s`;
+    humidity.innerText = `${weatherInfo?.main?.humidity} %`;
+    cloudiness.innerText = `${weatherInfo?.clouds?.all} %`;
     
 
 }
@@ -140,7 +142,7 @@ async function fetchSearchWeatherInfo(city){
     grantAccessContainer.classList.remove("active")
 
 try{
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`);
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
     const data = await response.json();
     loadingScreen.classList.remove("active")
     userInfoContainer.classList.add("active")
