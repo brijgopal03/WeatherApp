@@ -21,15 +21,15 @@ This is a simple weather application built using HTML, CSS, and JavaScript. The 
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/weather-app.git
+    git clone https://github.com/brijgopal03/WeatherApp.git
     ```
 2. Navigate to the project directory:
     ```bash
-    cd weather-app
+    cd WeatherApp
     ```
 3. Open `index.html` in your web browser to view the app.
 
-4. Enter a city name in the input field and press enter or click the "Search" button to get the current weather information.
+4. Give the location permission to automatically get the current weather information.
 
 ## API Setup
 
@@ -42,19 +42,3 @@ To use the OpenWeather API, you need to create a free account and get an API key
 ```javascript
 const apiKey = 'YOUR_API_KEY';
 ```
-
-## Demo
-
-You can see the app in action [here](https://your-username.github.io/weather-app).
-
-## Screenshots
-
-![Weather App Screenshot](path-to-screenshot)
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-This provides a concise overview of your weather app, helping users understand its functionality and how to set it up.
